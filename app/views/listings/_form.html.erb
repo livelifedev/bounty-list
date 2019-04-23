@@ -1,0 +1,35 @@
+<% if listing.errors.any? %>
+  <% listing.errors.full_messages.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+<%= form_with model: listing, local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :status %>
+    <%= form.select :status, [["active", 1], ["inactive", 2]] %>
+  </div>
+  <div>
+    <%= form.label :bounty %>
+    <%= form.number_field :bounty, min: 0 %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.label :delivery %>
+    <%= form.text_field :delivery %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
